@@ -1,3 +1,12 @@
+/**
+ * @Author: Fachrin Aulia Nasution <fachrinfan>
+ * @Date:   2019-04-16T12:13:54+07:00
+ * @Email:  fachrinfan@gmail.com
+ * @Last modified by:   fachrinfan
+ * @Last modified time: 2019-04-16T13:24:10+07:00
+ */
+
+
 package twitter
 
 import (

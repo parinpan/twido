@@ -1,3 +1,11 @@
+/**
+ * @Author: Fachrin Aulia Nasution <fachrinfan>
+ * @Date:   2019-04-16T10:31:05+07:00
+ * @Email:  fachrinfan@gmail.com
+ * @Last modified by:   fachrinfan
+ * @Last modified time: 2019-04-16T13:27:23+07:00
+ */
+
 package dataprovider
 
 import (

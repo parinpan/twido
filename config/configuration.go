@@ -1,3 +1,11 @@
+/**
+ * @Author: Fachrin Aulia Nasution <fachrinfan>
+ * @Date:   2019-04-16T09:57:22+07:00
+ * @Email:  fachrinfan@gmail.com
+ * @Last modified by:   fachrinfan
+ * @Last modified time: 2019-04-16T13:27:11+07:00
+ */
+
 package config
 
 import (

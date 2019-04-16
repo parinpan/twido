@@ -1,3 +1,10 @@
+/**
+ * @Author: dghubble
+ * @Notes:  Written functions here were taken from:
+ 			https://github.com/dghubble/oauth1, thanks to dghubble for
+			facilitating the OAuth 1.0 process in this application.
+*/
+
 package client
 
 import (
