@@ -2,14 +2,13 @@
  * @Author: Fachrin Aulia Nasution <fachrinfan>
  * @Date:   2019-04-16T16:14:02+07:00
  * @Email:  fachrinfan@gmail.com
- * @Last modified by:   nakama
- * @Last modified time: 2019-04-16T22:42:55+07:00
+ * @Last modified by:   fachrinfan
+ * @Last modified time: 2019-04-17T00:35:17+07:00
  */
 
 package engine
 
 import (
-	"fmt"
 	"log"
 	"sync"
 	"time"
@@ -18,21 +17,6 @@ import (
 	. "twido/config"
 	. "twido/dataprovider"
 )
-
-func BuildNotificationString(words ...string) string {
-	notifStr := fmt.Sprintf(
-		"Hi @%s, here it is your video download link %s. ",
-		words[0],
-		words[1],
-	)
-
-	notifStr += fmt.Sprintf(
-		"\n\nHope you enjoy it and thank you for using %s ;)",
-		words[2],
-	)
-
-	return notifStr
-}
 
 func NotifyUserTheVideoDownloadLink(strb *StatusesToReplyBack) {
 	dateTime := time.Now().String()
@@ -58,12 +42,24 @@ func NotifyUserTheVideoDownloadLink(strb *StatusesToReplyBack) {
 			defer wg.Done()
 			user := rb.OriginalStatus.User
 			replyToID := rb.OriginalStatus.IDStr
-			videoDownloadLink, err := ShortenURLByRebrandly(rb.VideoVariant.URL)
 
-			notificationString := BuildNotificationString(
-				user.ScreenName,
-				videoDownloadLink,
-				TwidoConfig.AppName,
+			rewrappedLink := BuildStringFromFormat(
+				TwidoConfig.StringFormat.ForwardLink,
+				map[string]string{
+					"video_url": rb.VideoVariant.URL,
+					"username":  user.ScreenName,
+					"tweet_id":  replyToID,
+				},
+			)
+
+			videoDownloadLink, _ := ShortenURLByRebrandly(rewrappedLink)
+			notificationString := BuildStringFromFormat(
+				TwidoConfig.StringFormat.Notification,
+				map[string]string{
+					"username":  user.ScreenName,
+					"video_url": videoDownloadLink,
+					"app_name":  TwidoConfig.AppName,
+				},
 			)
 
 			service := TwitterService{}

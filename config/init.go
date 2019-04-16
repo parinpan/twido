@@ -2,8 +2,8 @@
  * @Author: Fachrin Aulia Nasution <fachrinfan>
  * @Date:   2019-04-16T09:57:22+07:00
  * @Email:  fachrinfan@gmail.com
- * @Last modified by:   nakama
- * @Last modified time: 2019-04-16T23:06:24+07:00
+ * @Last modified by:   fachrinfan
+ * @Last modified time: 2019-04-17T00:35:33+07:00
  */
 
 package config

@@ -2,8 +2,8 @@
  * @Author: Fachrin Aulia Nasution <fachrinfan>
  * @Date:   2019-04-16T10:31:05+07:00
  * @Email:  fachrinfan@gmail.com
- * @Last modified by:   nakama
- * @Last modified time: 2019-04-16T22:47:35+07:00
+ * @Last modified by:   fachrinfan
+ * @Last modified time: 2019-04-17T00:35:12+07:00
  */
 
 package dataprovider
@@ -45,6 +45,11 @@ type UrlShortener struct {
 	Rebrandly Rebrandly `json:"rebrandly"`
 }
 
+type StringFormat struct {
+	Notification string `json:"notification"`
+	ForwardLink  string `json:"forwardLink"`
+}
+
 type Configuration struct {
 	AppName            string                 `json:"appName"`
 	AppNetwork         map[string]interface{} `json:"appNetwork"`
@@ -53,6 +58,7 @@ type Configuration struct {
 	TwitterApiEndpoint TwitterAEMap           `json:"twitterApiEndpoint"`
 	TwitterObservation map[string]string      `json:"twitterObservation"`
 	UrlShortener       UrlShortener           `json:"urlShortener"`
+	StringFormat       StringFormat           `json:"stringFormat"`
 }
 
 func (tae *TwitterAE) AddData(key string, value string) {
