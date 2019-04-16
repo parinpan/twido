@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T09:57:22+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T13:27:11+07:00
+ * @Last modified time: 2019-04-16T14:27:19+07:00
  */
 
 package config
@@ -41,5 +41,5 @@ func NewConfiguration(environment string) (*Configuration, error) {
 	return configuration, nil
 }
 
-// apps bootstrap
+// apps config's bootstrap
 var TwidoConfig, TwidoConfigErr = NewConfiguration("production")

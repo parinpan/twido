@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T10:31:05+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T13:27:23+07:00
+ * @Last modified time: 2019-04-16T14:39:16+07:00
  */
 
 package dataprovider
@@ -14,6 +14,12 @@ import (
 
 type TwitterAE TwitterAPIEndpoint
 type TwitterAEMap map[string]TwitterAE
+
+type RedisConnection struct {
+	Addr     string `json:"address"`
+	Password string `json:"password"`
+	DB       int    `json:"db"`
+}
 
 type TwitterAPIEndpoint struct {
 	Method string `json:"method"`
@@ -31,6 +37,7 @@ type TwitterAPIKey struct {
 type Configuration struct {
 	AppName            string                 `json:"appName"`
 	AppNetwork         map[string]interface{} `json:"appNetwork"`
+	RedisConnection    RedisConnection        `json:"redisConnection"`
 	TwitterApiKey      TwitterAPIKey          `json:"twitterApiKey"`
 	TwitterApiEndpoint TwitterAEMap           `json:"twitterApiEndpoint"`
 	TwitterObservation map[string]string      `json:"twitterObservation"`

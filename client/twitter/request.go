@@ -3,9 +3,8 @@
  * @Date:   2019-04-16T12:16:16+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T13:24:06+07:00
+ * @Last modified time: 2019-04-16T14:36:58+07:00
  */
-
 
 package twitter
 
@@ -38,8 +37,12 @@ type TwitterOauth struct {
 /* Collection of TwitterClientRequest method implementation */
 
 func NewTwitterClientRequest(endpoint TwitterAE) *TwitterClientRequest {
+	var networkTimeout = time.Duration(
+		int64(TwidoConfig.AppNetwork["timeout"].(float64)),
+	)
+
 	client := &http.Client{
-		Timeout: 20 * time.Second,
+		Timeout: time.Second * networkTimeout,
 	}
 
 	return &TwitterClientRequest{

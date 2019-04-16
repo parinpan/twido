@@ -3,6 +3,11 @@
     "appNetwork": {
         "timeout": 20
     },
+    "redisConnection": {
+        "address": "localhost:6379",
+        "password": "",
+        "db": 0
+    },
     "twitterApiKey": {
         "consumer": "VgIZYMlgh1LTQyk1RWjZRGtMR",
         "consumerSecret": "98RlY0ic2elzHyHlgJzPpHhJw21sWu7QnOXIYS5zy0FTChKrR8",
@@ -24,6 +29,7 @@
         }
     },
     "twitterObservation": {
-        "keyword": "@twidoplease"
+        "keyword": "@twidoplease",
+        "maxSearchCount": "100"
     }
 }
