@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T11:18:02+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T18:34:47+07:00
+ * @Last modified time: 2019-04-16T18:44:13+07:00
  */
 
 package main
@@ -14,7 +14,7 @@ import (
 	. "twido/engine"
 )
 
-var runTwitterVideoDownloaderApps = func() {
+var runTwitterVideoDownloaderBotApps = func() {
 	statusesToReplyBack, _ := CollectMentionsAsStatusesToReplyBack()
 	NotifyUserTheVideoDownloadLink(statusesToReplyBack)
 }
@@ -25,5 +25,5 @@ func main() {
 		return
 	}
 
-	runTwitterVideoDownloaderApps()
+	runTwitterVideoDownloaderBotApps()
 }
