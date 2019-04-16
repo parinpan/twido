@@ -35,12 +35,12 @@ func (rc *RequestConverter) Convert() (interface{}, error) {
 		return nil, errors.New(errorMsg)
 	}
 
-	slicePtr := reflect.New(instanceType)
+	objectPtr := reflect.New(instanceType)
 
-	if err := json.Unmarshal(rc.Data, slicePtr.Interface()); nil != err {
+	if err := json.Unmarshal(rc.Data, objectPtr.Interface()); nil != err {
 		log.Println("Couldn't unmarshal data to object in converter")
 		return nil, err
 	}
 
-	return slicePtr.Interface(), nil
+	return objectPtr.Interface(), nil
 }
