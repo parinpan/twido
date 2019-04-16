@@ -2,8 +2,8 @@
  * @Author: Fachrin Aulia Nasution <fachrinfan>
  * @Date:   2019-04-16T16:14:02+07:00
  * @Email:  fachrinfan@gmail.com
- * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T18:49:22+07:00
+ * @Last modified by:   nakama
+ * @Last modified time: 2019-04-16T22:42:55+07:00
  */
 
 package engine
@@ -38,6 +38,11 @@ func NotifyUserTheVideoDownloadLink(strb *StatusesToReplyBack) {
 	dateTime := time.Now().String()
 	log.Println("NotifyUserTheVideoDownloadLink starts at: " + dateTime)
 
+	if nil == strb {
+		log.Println("There's no queue to process. Apps will exit now.")
+		return
+	}
+
 	maxStatusID := ""
 	replyBackQueue := strb.Queue
 	redisCacheManager := NewRedisCacheManager()
@@ -45,28 +50,26 @@ func NotifyUserTheVideoDownloadLink(strb *StatusesToReplyBack) {
 	var wg sync.WaitGroup
 	var replyToIds sync.Map
 
-	for _, replyInfo := range replyBackQueue {
-		user := replyInfo.OriginalStatus.User
-		videoDownloadLink := replyInfo.VideoVariant.URL
-		replyToID := replyInfo.OriginalStatus.InReplyToStatusIDStr
-
-		notificationString := BuildNotificationString(
-			user.ScreenName,
-			videoDownloadLink,
-			TwidoConfig.AppName,
-		)
-
+	for _, replyBody := range replyBackQueue {
 		// add the go routine anonymous function to the wait group
 		wg.Add(1)
 
-		go func() {
+		go func(rb ReplyBody) {
 			defer wg.Done()
-			service := TwitterService{}
+			user := rb.OriginalStatus.User
+			replyToID := rb.OriginalStatus.IDStr
+			videoDownloadLink, err := ShortenURLByRebrandly(rb.VideoVariant.URL)
 
+			notificationString := BuildNotificationString(
+				user.ScreenName,
+				videoDownloadLink,
+				TwidoConfig.AppName,
+			)
+
+			service := TwitterService{}
 			status, err := service.Statuses.Update(map[string]string{
-				"auto_populate_reply_metadata": "true",
-				"in_reply_to_status_id":        replyToID,
-				"status":                       notificationString,
+				"in_reply_to_status_id": replyToID,
+				"status":                notificationString,
 			})
 
 			/*
@@ -79,15 +82,15 @@ func NotifyUserTheVideoDownloadLink(strb *StatusesToReplyBack) {
 			}
 
 			replyToIds.Store(replyToID, true)
-		}()
+		}(replyBody)
 	}
 
 	// wait all the marathon runners ;)
 	wg.Wait()
 
 	// finding the newest status ID
-	for _, replyInfo := range replyBackQueue {
-		id := replyInfo.OriginalStatus.InReplyToStatusIDStr
+	for _, replyBody := range replyBackQueue {
+		id := replyBody.OriginalStatus.IDStr
 		_, isIDRegisteredToReply := replyToIds.Load(id)
 
 		if id > maxStatusID && isIDRegisteredToReply {
@@ -97,10 +100,12 @@ func NotifyUserTheVideoDownloadLink(strb *StatusesToReplyBack) {
 
 	// save the newest status ID for the next iteration
 	if "" != maxStatusID && maxStatusID > "0" {
+		oneYearDuration := time.Hour * 24 * 365
+
 		maxStatusIDSet := redisCacheManager.Set(
 			LastSavedTweetIDKey,
 			maxStatusID,
-			time.Hour*1,
+			oneYearDuration,
 		)
 
 		if maxStatusIDSet {

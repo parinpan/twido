@@ -3,6 +3,14 @@
     "appNetwork": {
         "timeout": 20
     },
+    "urlShortener": {
+        "rebrandly": {
+            "active": true,
+            "baseUrlApi": "https://api.rebrandly.com/v1/links",
+            "apiKey": "d741b671fc074cc1ac07e68157042fe9",
+            "domain": "twidoplease.com"
+        }
+    },
     "redisConnection": {
         "address": "localhost:6379",
         "password": "",

@@ -2,8 +2,8 @@
  * @Author: Fachrin Aulia Nasution <fachrinfan>
  * @Date:   2019-04-16T10:31:05+07:00
  * @Email:  fachrinfan@gmail.com
- * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T14:39:16+07:00
+ * @Last modified by:   nakama
+ * @Last modified time: 2019-04-16T22:47:35+07:00
  */
 
 package dataprovider
@@ -34,6 +34,17 @@ type TwitterAPIKey struct {
 	AccessSecret   string
 }
 
+type Rebrandly struct {
+	BaseUrlApi string `json:"baseUrlApi"`
+	ApiKey     string `json:"apiKey"`
+	Domain     string `json:"domain"`
+	Active     bool   `json:"active"`
+}
+
+type UrlShortener struct {
+	Rebrandly Rebrandly `json:"rebrandly"`
+}
+
 type Configuration struct {
 	AppName            string                 `json:"appName"`
 	AppNetwork         map[string]interface{} `json:"appNetwork"`
@@ -41,6 +52,7 @@ type Configuration struct {
 	TwitterApiKey      TwitterAPIKey          `json:"twitterApiKey"`
 	TwitterApiEndpoint TwitterAEMap           `json:"twitterApiEndpoint"`
 	TwitterObservation map[string]string      `json:"twitterObservation"`
+	UrlShortener       UrlShortener           `json:"urlShortener"`
 }
 
 func (tae *TwitterAE) AddData(key string, value string) {
