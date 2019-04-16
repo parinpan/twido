@@ -43,5 +43,6 @@
     "twitterObservation": {
         "keyword": "@twidoplease",
         "maxSearchCount": "100"
-    }
+    },
+    "forwardLinkFormat": "http://172.245.33.105:8080/?video=%s&requested_by=%s"
 }
