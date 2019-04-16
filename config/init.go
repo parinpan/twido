@@ -2,8 +2,8 @@
  * @Author: Fachrin Aulia Nasution <fachrinfan>
  * @Date:   2019-04-16T09:57:22+07:00
  * @Email:  fachrinfan@gmail.com
- * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T14:27:19+07:00
+ * @Last modified by:   nakama
+ * @Last modified time: 2019-04-16T23:06:24+07:00
  */
 
 package config
@@ -18,7 +18,7 @@ import (
 
 func NewConfiguration(environment string) (*Configuration, error) {
 	configuration := &Configuration{}
-	configFile, err := os.Open("config/" + environment + "-config.json")
+	configFile, err := os.Open("config/" + environment + ".json")
 
 	if nil != err {
 		log.Println("Could not open app's config file.")
