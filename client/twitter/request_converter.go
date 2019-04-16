@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T12:30:42+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T13:23:55+07:00
+ * @Last modified time: 2019-04-16T18:25:32+07:00
  */
 
 package twitter
@@ -20,6 +20,7 @@ var InstanceTypes = map[string]reflect.Type{
 	"search-tweets":   reflect.TypeOf(TwitterSearch{}),
 	"show-status":     reflect.TypeOf(Status{}),
 	"lookup-statuses": reflect.TypeOf([]Status{}),
+	"update-status":   reflect.TypeOf(Status{}),
 }
 
 type RequestConverter struct {
@@ -44,7 +45,6 @@ func (rc *RequestConverter) Convert() (interface{}, error) {
 	}
 
 	objectPtr := reflect.New(instanceType)
-
 	if err := json.Unmarshal(rc.Data, objectPtr.Interface()); nil != err {
 		log.Println("Couldn't unmarshal data to object in converter")
 		return nil, err

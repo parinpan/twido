@@ -3,9 +3,8 @@
  * @Date:   2019-04-16T12:16:52+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T13:24:18+07:00
+ * @Last modified time: 2019-04-16T18:14:24+07:00
  */
-
 
 package twitter
 
@@ -29,7 +28,7 @@ func (ss *StatusesService) Show(params map[string]string) (*Status, error) {
 	return result.(*Status), err
 }
 
-func (ss *StatusesService) Lookup(params map[string]string) ([]Status, error) {
+func (ss *StatusesService) Lookup(params map[string]string) (*[]Status, error) {
 	result, err := LoadService(
 		&ServiceBody{SlugName: "lookup-statuses", Params: params},
 		nil,
@@ -39,5 +38,18 @@ func (ss *StatusesService) Lookup(params map[string]string) ([]Status, error) {
 		return nil, err
 	}
 
-	return result.([]Status), err
+	return result.(*[]Status), err
+}
+
+func (ss *StatusesService) Update(params map[string]string) (*Status, error) {
+	result, err := LoadService(
+		&ServiceBody{SlugName: "update-status", Params: params},
+		nil,
+	)
+
+	if nil != err {
+		return nil, err
+	}
+
+	return result.(*Status), err
 }

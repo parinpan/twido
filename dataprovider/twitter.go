@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T10:18:44+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T14:39:18+07:00
+ * @Last modified time: 2019-04-16T16:10:02+07:00
  */
 
 package dataprovider
@@ -49,4 +49,16 @@ type Status struct {
 
 type TwitterSearch struct {
 	Statuses []Status `json:"statuses"`
+}
+
+func (vi *VideoInfo) GetHighestQualityVideoVariant() VideoVariant {
+	var videoVariant VideoVariant
+
+	for _, vidVariant := range vi.Variants {
+		if vidVariant.Bitrate > videoVariant.Bitrate {
+			videoVariant = vidVariant
+		}
+	}
+
+	return videoVariant
 }

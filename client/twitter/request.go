@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T12:16:16+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T14:36:58+07:00
+ * @Last modified time: 2019-04-16T18:26:05+07:00
  */
 
 package twitter
@@ -53,7 +53,6 @@ func NewTwitterClientRequest(endpoint TwitterAE) *TwitterClientRequest {
 
 func (tcr *TwitterClientRequest) request() (*http.Response, error) {
 	var err error
-
 	endpoint := tcr.Endpoint
 	method := strings.ToUpper(tcr.Endpoint.Method)
 
@@ -100,8 +99,18 @@ func (tcr *TwitterClientRequest) get() (*http.Request, error) {
 	return req, nil
 }
 
+/* This function is still considered having strange behavior, fix it later */
 func (tcr *TwitterClientRequest) post() (*http.Request, error) {
-	return nil, nil
+	data := strings.NewReader(tcr.Endpoint.Data.Encode())
+	req, err := http.NewRequest(tcr.Endpoint.Method, tcr.Endpoint.URL, data)
+
+	if nil != err {
+		return nil, err
+	}
+
+	req.URL.RawQuery = tcr.Endpoint.Data.Encode()
+
+	return req, nil
 }
 
 func (tcr *TwitterClientRequest) Raw() ([]byte, error) {

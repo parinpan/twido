@@ -3,17 +3,21 @@
  * @Date:   2019-04-16T11:18:02+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-16T14:39:27+07:00
+ * @Last modified time: 2019-04-16T18:34:47+07:00
  */
 
 package main
 
 import (
-	"fmt"
 	"log"
-	. "twido/client/twitter"
 	. "twido/config"
+	. "twido/engine"
 )
+
+var runTwitterVideoDownloaderApps = func() {
+	statusesToReplyBack, _ := CollectMentionsAsStatusesToReplyBack()
+	NotifyUserTheVideoDownloadLink(statusesToReplyBack)
+}
 
 func main() {
 	if nil != TwidoConfigErr {
@@ -21,15 +25,5 @@ func main() {
 		return
 	}
 
-	service := TwitterService{}
-
-	result, err := service.Statuses.Show(map[string]string{
-		"id": "1117989996189945857",
-	})
-
-	if nil != err {
-		log.Println(err.Error())
-	}
-
-	fmt.Printf("%#v\n", result)
+	runTwitterVideoDownloaderApps()
 }
