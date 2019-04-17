@@ -11,9 +11,10 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
 
 ## **How To Setup Twido**
 
- 1. Make sure Twido's Dependencies are already installed on your machine
- 2. Rename the **production.json.sample** config file in *config* directory to **production.json**
- 3. Setup the **production.json** configuration
+ 1. Clone this repository into your *$GOPATH*
+ 2. Make sure Twido's Dependencies are already installed on your machine
+ 3. Rename the **production.json.sample** config file in *config* directory to **production.json**
+ 4. Setup the **production.json** configuration
 	 - Setup your twitter credentials key and put them in these lines (required)
 	 
 	 ```
