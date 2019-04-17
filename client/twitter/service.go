@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T12:13:54+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-17T11:32:41+07:00
+ * @Last modified time: 2019-04-17T11:50:18+07:00
  */
 
 package twitter
@@ -38,7 +38,7 @@ func LoadService(body *ServiceBody, middleware ServiceMiddleware) (interface{}, 
 	resultInterface, err := request.Result(body.SlugName)
 
 	if nil != err {
-		log.Println("Couldn't get the result by calling the twitter service.")
+		log.Println(err.Error())
 		return nil, err
 	}
 

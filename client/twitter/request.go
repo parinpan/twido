@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T12:16:16+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-17T00:35:01+07:00
+ * @Last modified time: 2019-04-17T11:49:05+07:00
  */
 
 package twitter
@@ -12,6 +12,7 @@ import (
 	"crypto/hmac"
 	"crypto/sha1"
 	"encoding/base64"
+	"errors"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -52,6 +53,10 @@ func NewTwitterClientRequest(endpoint TwitterAE) *TwitterClientRequest {
 }
 
 func (tcr *TwitterClientRequest) request() (*http.Response, error) {
+	if !IsTwitterCredentialSet() {
+		return nil, errors.New("Twitter Credential isn't set in this app yet.")
+	}
+
 	var err error
 	endpoint := tcr.Endpoint
 	method := strings.ToUpper(tcr.Endpoint.Method)
