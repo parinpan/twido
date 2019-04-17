@@ -1,5 +1,6 @@
 
 
+
 # Twido
 Twido is a twitter bot library built from scratch that can notify twitter users a twitter video download link. It's also pretty modifiable, extendable and configurable, so you can add your own layer on it.
 
@@ -17,7 +18,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
  3. Rename the **production.json.sample** config file in *config* directory to **production.json**
  4. Setup the **production.json** configuration
  
-	 - Setup your twitter credentials key and put them in these lines (required)
+	 - Setup your twitter credential keys and put them in these lines (required)
 	 
 	 ```json
 	 "twitterApiKey": {
@@ -27,7 +28,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
         "accessSecret": "<YOUR_ACCESS_TOKEN_SECRET>"
     }
     ```
-    - Setup your Rebrandly URL Shortener service credentials key and put them in these lines, setup the active field to *false* when you don't need this service (optional)
+    - Setup your Rebrandly URL Shortener service credential key and put them in these lines, setup the active field to *false* when you don't need this service (optional)
     
     ```json
     "urlShortener": {
@@ -54,3 +55,6 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
 		    BasePath: 	 "/absolute/path/go/src/twido/config", // change it to yours
 	})
     ```
+5. Hooray, the setup is done! If you still feel roaming about Twitter & Rebrandly Credential Keys, it may help you:
+	- [Twitter Developer Docs](https://developer.twitter.com/en.html)
+	- [Rebrandly Developer Docs](https://developers.rebrandly.com/docs/get-started)
