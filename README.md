@@ -16,6 +16,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
  2. Make sure Twido's Dependencies are already installed on your machine
  3. Rename the **production.json.sample** config file in *config* directory to **production.json**
  4. Setup the **production.json** configuration
+ 
 	 - Setup your twitter credentials key and put them in these lines (required)
 	 
 	 ```json
