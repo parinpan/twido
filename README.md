@@ -1,4 +1,5 @@
 
+
 # Twido
 Twido is a twitter bot library built from scratch that can notify twitter users a twitter video download link. It's also pretty modifiable, extendable and configurable, so you can add your own layer on it.
 
@@ -44,4 +45,11 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
         "forwardLink": "http://<YOUR_DOMAIN_HERE>/?video={video_url}&requested_by={username}&tweet_id={tweet_id}",
         "notification": "I ask the almighty God about the video link for you and it's accessible on: {video_url} \n\n-Don't hesitate to come back buddy, @{username}"
     }
+    ```
+    - Setup the configuration absolute path to where it's actually located by opening **init.go** file in *config* directory, find these lines and change it to the right absolute path (required)
+    ```
+    var TwidoConfig, TwidoConfigErr = NewConfiguration(ConfigurationOption{
+		    Environment: "production",
+		    BasePath: 	 "/absolute/path/go/src/twido/config", // change it to yours
+	})
     ```
