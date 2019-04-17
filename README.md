@@ -1,6 +1,6 @@
 
 # Twido
-Twido is a twitter bot library built from scratch that can notify twitter users a download link of twitter video. It's also pretty modifiable, extendable and configurable, so you can add your own layer on it.
+Twido is a twitter bot library built from scratch that can notify twitter users a twitter video download link. It's also pretty modifiable, extendable and configurable, so you can add your own layer on it.
 
 ## **Twido's Dependencies**
 There are some dependencies that Twido needs to work with. Twido uses Redis and communicate with it using Go Redis library. To start exploring it deeper, you need to install them.
