@@ -39,6 +39,13 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
         }
      }
     ```
+    - Setup your twitter (bot) account username and max count per search, modify them in these lines
+    ```json
+    "twitterObservation": {
+		"keyword": "@yourtwitterusername",
+		"maxSearchCount": "100"
+	}
+    ``` 
     - Setup your forward link and notification string format, modify them in these lines (you can arrange reserved template tags such as *{video_url} {username} {tweet_id}* to your need)
     
     ```json
@@ -80,3 +87,10 @@ crontab -e
 */1 * * * * /usr/local/bin/twido >> /your/path/to/the/custom.log 2>&1
 ```
 5. Done
+
+## **Contact Me** 
+If you want to offer opportunities or facing difficulties setting up this twitter bot. You can catch me up on:
+- [Linkedin](https://linkedin.com/in/fachrinfan)
+- [Twitter](https://twitter.com/fachrinfan)
+- [Instagram](https://instagram.com/fachrinfan)
+- [Email](mailto:fachrinnn@gmail.com)
