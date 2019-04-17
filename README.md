@@ -47,7 +47,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
     }
     ```
     - Setup the configuration absolute path to where it's actually located by opening **init.go** file in *config* directory, find these lines and change it to the right absolute path (required)
-    ```
+    ```go
     var TwidoConfig, TwidoConfigErr = NewConfiguration(ConfigurationOption{
 		    Environment: "production",
 		    BasePath: 	 "/absolute/path/go/src/twido/config", // change it to yours
