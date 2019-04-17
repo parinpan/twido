@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T10:31:05+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-17T00:35:12+07:00
+ * @Last modified time: 2019-04-17T08:47:13+07:00
  */
 
 package dataprovider
@@ -48,6 +48,11 @@ type UrlShortener struct {
 type StringFormat struct {
 	Notification string `json:"notification"`
 	ForwardLink  string `json:"forwardLink"`
+}
+
+type ConfigurationOption struct {
+	Environment string
+	BasePath    string
 }
 
 type Configuration struct {

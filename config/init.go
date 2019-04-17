@@ -3,13 +3,14 @@
  * @Date:   2019-04-16T09:57:22+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-17T08:26:26+07:00
+ * @Last modified time: 2019-04-17T08:51:23+07:00
  */
 
 package config
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -17,9 +18,11 @@ import (
 	. "twido/dataprovider"
 )
 
-func NewConfiguration(environment string) (*Configuration, error) {
+func NewConfiguration(co ConfigurationOption) (*Configuration, error) {
 	configuration := &Configuration{}
-	configFilePath, _ := filepath.Abs("twido/config/" + environment + ".json")
+	choosenCfgPath := fmt.Sprintf("%s/%s.json", co.BasePath, co.Environment)
+
+	configFilePath, _ := filepath.Abs(choosenCfgPath)
 	configFile, err := os.Open(configFilePath)
 
 	if nil != err {
@@ -44,4 +47,7 @@ func NewConfiguration(environment string) (*Configuration, error) {
 }
 
 // apps config's bootstrap
-var TwidoConfig, TwidoConfigErr = NewConfiguration("production")
+var TwidoConfig, TwidoConfigErr = NewConfiguration(ConfigurationOption{
+	Environment: "production",
+	BasePath:    "/root//arts/go-projects/src/twido/config", // absolute path to config directory
+})
