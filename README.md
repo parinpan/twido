@@ -37,7 +37,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
         }
      }
     ```
-    - Setup your forward link and notification string format, modify them in these lines
+    - Setup your forward link and notification string format, modify them in these lines (you can arrange reserved template tags such as *{video_url} {username} {tweet_id}* to your need)
     
     ```
     "stringFormat": {
