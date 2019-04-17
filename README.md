@@ -1,6 +1,3 @@
-
-
-
 # Twido
 Twido is a twitter bot library built from scratch that can notify twitter users a twitter video download link. It's also pretty modifiable, extendable and configurable, so you can add your own layer on it.
 
@@ -17,7 +14,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
 
  1. Clone this repository into your *$GOPATH*
  2. Make sure Twido's Dependencies are already installed on your machine
- 3. Rename the **production.json.sample** config file in *config* directory to **production.json**
+ 3. Rename the **production.json.sample** config file in project *config* directory to **production.json**
  4. Setup the **production.json** configuration
  
 	 - Setup your twitter credential keys and put them in these lines (required)
@@ -50,7 +47,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
         "notification": "I ask the almighty God about the video link for you and it's accessible on: {video_url} \n\n-Don't hesitate to come back buddy, @{username}"
     }
     ```
-    - Setup the configuration absolute path to where it's actually located by opening **init.go** file in *config* directory, find these lines and change it to the right absolute path (required)
+    - Setup the configuration absolute path to where it's actually located by opening **init.go** file in project *config* directory, find these lines and change it to the right absolute path (required)
     ```go
     var TwidoConfig, TwidoConfigErr = NewConfiguration(ConfigurationOption{
 		    Environment: "production",
@@ -60,3 +57,13 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
 5. Hooray, the setup is done! If you still feel roaming about Twitter & Rebrandly Credential Keys, it may help you:
 	- [Twitter Developer Docs](https://developer.twitter.com/en.html)
 	- [Rebrandly Developer Docs](https://developers.rebrandly.com/docs/get-started)
+
+## **How To Run Twido After Setting Up**
+This is the most exciting part. You're gonna run twido on twitter as a bot that will help users to find their twitter video download link. Basically, you just need fours steps below:
+1. Build the **twido.go** file in the project directory into an executable file, type it in your terminal:
+``go build /path/to/the/project/directory/twido.go``
+
+2. After building **twido.go** file, now you have a file named **twido** without *.go*. It's an executable file you need to run the bot. Move it to your */usr/local/bin*, type it on your terminal:
+``mv twido /usr/local/bin/twido``
+
+3. Now, you need to execute */usr/local/bin/twido* executable file every **N** minute(s), so it can check the users' new requests continuously. Here, you will need the cronjob service.
