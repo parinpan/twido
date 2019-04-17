@@ -46,6 +46,6 @@
     },
     "stringFormat": {
         "forwardLink": "http://172.245.33.105/?video={video_url}&requested_by={username}&tweet_id={tweet_id}",
-        "notification": "I ask the almighty God about the video link for you and it's accessible on: {video_url} \n\n-Don't hesitate to come back buddy, @{username}."
+        "notification": "I ask the almighty God about the video link for you and it's accessible on: {video_url} \n\n-Don't hesitate to come back buddy, @{username}"
     }
 }
