@@ -26,7 +26,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
         "accessSecret": "<YOUR_ACCESS_TOKEN_SECRET>"
     }
     ```
-    - Setup your Rebrandly URL Shortener service credentials key and put them in these lines (optional)
+    - Setup your Rebrandly URL Shortener service credentials key and put them in these lines, setup the active field to false when you don't need this service (optional)
     
     ```json
     "urlShortener": {
