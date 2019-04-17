@@ -59,11 +59,24 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
 	- [Rebrandly Developer Docs](https://developers.rebrandly.com/docs/get-started)
 
 ## **How To Run Twido After Setting Up**
-This is the most exciting part. You're gonna run twido on twitter as a bot that will help users to find their twitter video download link. Basically, you just need fours steps below:
+This is the most exciting part. You're gonna run twido on twitter as a bot that will help users to find their twitter video download link. Basically, you just need five steps below:
 1. Build the **twido.go** file in the project directory into an executable file, type it in your terminal:
-``go build /path/to/the/project/directory/twido.go``
+
+```
+go build /path/to/the/project/directory/twido.go
+```
 
 2. After building **twido.go** file, now you have a file named **twido** without *.go*. It's an executable file you need to run the bot. Move it to your */usr/local/bin*, type it on your terminal:
-``mv twido /usr/local/bin/twido``
+```
+mv twido /usr/local/bin/twido
+```
 
-3. Now, you need to execute */usr/local/bin/twido* executable file every **N** minute(s), so it can check the users' new requests continuously. Here, you will need the cronjob service.
+3. Now, you need to execute */usr/local/bin/twido* executable file every **N** minute(s), so it can check the users' new requests continuously. Here, you will need the cronjob service. Type it on your terminal:
+```
+crontab -e
+```
+4. Add the snippet below to the end of crontab file line. So, the executable file will be executed by the operating system every 1 minute.
+```
+*/1 * * * * /usr/local/bin/twido >> /your/path/to/the/custom.log 2>&1
+```
+5. Done
