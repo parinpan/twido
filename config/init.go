@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T09:57:22+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-17T00:35:33+07:00
+ * @Last modified time: 2019-04-17T08:26:26+07:00
  */
 
 package config
@@ -13,15 +13,17 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"path/filepath"
 	. "twido/dataprovider"
 )
 
 func NewConfiguration(environment string) (*Configuration, error) {
 	configuration := &Configuration{}
-	configFile, err := os.Open("config/" + environment + ".json")
+	configFilePath, _ := filepath.Abs("twido/config/" + environment + ".json")
+	configFile, err := os.Open(configFilePath)
 
 	if nil != err {
-		log.Println("Could not open app's config file.")
+		log.Println("Could not open app's config file." + err.Error())
 		return nil, err
 	}
 
