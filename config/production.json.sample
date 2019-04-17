@@ -7,7 +7,7 @@
         "rebrandly": {
             "active": true,
             "baseUrlApi": "https://api.rebrandly.com/v1/links",
-            "apiKey": "d741b671fc074cc1ac07e68157042fe9",
+            "apiKey": "",
             "domain": "twidoplease.com"
         }
     },
@@ -17,10 +17,10 @@
         "db": 0
     },
     "twitterApiKey": {
-        "consumer": "VgIZYMlgh1LTQyk1RWjZRGtMR",
-        "consumerSecret": "98RlY0ic2elzHyHlgJzPpHhJw21sWu7QnOXIYS5zy0FTChKrR8",
-        "access": "1116636107230158848-XkrJe2GlWdf4Rtgwgu0XxSEFkAHgF9",
-        "accessSecret": "T8Nx7IIKLsKcxZytcAaXlHLVtHkGkXTkNnGImBPD9bXFX"
+        "consumer": "",
+        "consumerSecret": "",
+        "access": "",
+        "accessSecret": ""
     },
     "twitterApiEndpoint": {
         "search-tweets": {
