@@ -18,7 +18,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
  4. Setup the **production.json** configuration
 	 - Setup your twitter credentials key and put them in these lines (required)
 	 
-	 ```
+	 ```json
 	 "twitterApiKey": {
         "consumer": "<YOUR_CONSUMER_KEY>",
         "consumerSecret": "<YOUR_CONSUMER_SECRET_KEY>",
@@ -28,7 +28,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
     ```
     - Setup your Rebrandly URL Shortener service credentials key and put them in these lines (optional)
     
-    ```
+    ```json
     "urlShortener": {
         "rebrandly": {
             "active": true,
@@ -40,7 +40,7 @@ There are some dependencies that Twido needs to work with. Twido uses Redis and 
     ```
     - Setup your forward link and notification string format, modify them in these lines (you can arrange reserved template tags such as *{video_url} {username} {tweet_id}* to your need)
     
-    ```
+    ```json
     "stringFormat": {
         "forwardLink": "http://<YOUR_DOMAIN_HERE>/?video={video_url}&requested_by={username}&tweet_id={tweet_id}",
         "notification": "I ask the almighty God about the video link for you and it's accessible on: {video_url} \n\n-Don't hesitate to come back buddy, @{username}"
