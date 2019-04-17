@@ -3,7 +3,7 @@
  * @Date:   2019-04-16T09:57:22+07:00
  * @Email:  fachrinfan@gmail.com
  * @Last modified by:   fachrinfan
- * @Last modified time: 2019-04-17T11:48:02+07:00
+ * @Last modified time: 2019-04-17T11:54:45+07:00
  */
 
 package config
@@ -61,7 +61,7 @@ func IsTwitterCredentialSet() bool {
 	}
 
 	for _, keyStr := range elementsToCheck {
-		if "" != keyStr {
+		if "" == keyStr {
 			return false
 		}
 	}
