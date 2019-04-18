@@ -73,12 +73,12 @@ This is the most exciting part. You're gonna run twido on twitter as a bot that 
 go build /path/to/the/project/directory/twido.go
 ```
 
-2. After building **twido.go** file, now you have a file named **twido** without *.go*. It's an executable file you need to run the bot. Move it to your */usr/local/bin*, type it on your terminal:
+2. After building **twido.go** file, now you have a file named **twido** without *.go*. It's an executable file you need to run the bot. Move it to your */usr/local/bin*, type it in your terminal:
 ```
 mv twido /usr/local/bin/twido
 ```
 
-3. Now, you need to execute */usr/local/bin/twido* executable file every **N** minute(s), so it can check the users' new requests continuously. Here, you will need the cronjob service. Type it on your terminal:
+3. Now, you need to execute */usr/local/bin/twido* executable file every **N** minute(s), so it can check the users' new requests continuously. Here, you will need the cronjob service. Type it in your terminal:
 ```
 crontab -e
 ```
