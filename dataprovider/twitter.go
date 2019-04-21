@@ -55,7 +55,7 @@ func (vi *VideoInfo) GetHighestQualityVideoVariant() VideoVariant {
 	var videoVariant VideoVariant
 
 	for _, vidVariant := range vi.Variants {
-		if vidVariant.Bitrate > videoVariant.Bitrate {
+		if vidVariant.Bitrate >= videoVariant.Bitrate {
 			videoVariant = vidVariant
 		}
 	}
