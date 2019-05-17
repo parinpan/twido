@@ -96,12 +96,9 @@ func NotifyUserTheVideoDownloadLink(strb *StatusesToReplyBack) {
 
 	// save the newest status ID for the next iteration
 	if "" != maxStatusID && maxStatusID > "0" {
-		oneYearDuration := time.Hour * 24 * 365
-
 		maxStatusIDSet := redisCacheManager.SetPersist(
 			LastSavedTweetIDKey,
 			maxStatusID,
-			oneYearDuration,
 		)
 
 		if maxStatusIDSet {
